@@ -1,12 +1,8 @@
-node ('workers')
-{
-    try{
-        stage('Checkout'){
-            checkout scm
+pipeline {
+    agent { docker { image 'python:3.10.1-alpine'}}
+    stages {
+        steps {
+            sh 'python --version'
         }
     }
-    catch(err){
-        echp "Handling errors".
-    } finally.
-        echo "Cleaning up"
 }
